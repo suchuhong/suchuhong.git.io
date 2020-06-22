@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>贝叶斯滤波 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="$$\text { 重要定理：若 }f_{X}(x) \text { ~ } N\left(\mu_{1}, \sigma_{1}^{2}\right), \quad f_{Y |X}(y | x)  \text { ~ } N\left(\mu_{2}, \sigma_{2}^{2}\right)$$ $$\text { 则 }f_{X |Y}(x | y)&#x3D;\left(\frac{\sigma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贝叶斯滤波">
+<meta property="og:url" content="http://yoursite.com/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%BB%A4%E6%B3%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="$$\text { 重要定理：若 }f_{X}(x) \text { ~ } N\left(\mu_{1}, \sigma_{1}^{2}\right), \quad f_{Y |X}(y | x)  \text { ~ } N\left(\mu_{2}, \sigma_{2}^{2}\right)$$ $$\text { 则 }f_{X |Y}(x | y)&#x3D;\left(\frac{\sigma">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-22T06:26:37.976Z">
+<meta property="article:modified_time" content="2020-04-23T09:48:00.771Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-贝叶斯滤波" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%BB%A4%E6%B3%A2/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.976Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      贝叶斯滤波
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>$$<br>\text { 重要定理：若 }f_{X}(x) \text { ~ } N\left(\mu_{1}, \sigma_{1}^{2}\right), \quad f_{Y |X}(y | x)  \text { ~ } N\left(\mu_{2}, \sigma_{2}^{2}\right)<br>$$</p>
+<p>$$<br>\text { 则 }f_{X |Y}(x | y)=\left(\frac{\sigma_{1}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}} \mu_{2}+\frac{\sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}} \mu_{1}, \frac{\sigma_{1}^{2} \sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}\right)<br>$$</p>
+<p>$$<br>\text { 若 } \quad \sigma_{1}^{2}\gg\sigma_{2}^{2}  \text { 后验 ~} N\left(\frac{1}{1+\left(\sigma_{2}^{2} / \sigma_{1}^{2}\right)} \mu_{2}+\frac{\sigma_{2}^{2} / \sigma_{1}^{2}}{1+\left(\sigma_{2}^{2} / \sigma_{1}^{2}\right)} \mu_{1}, \frac{\sigma_{2}^{2}}{1+\left(\sigma_{2}^{2} / \sigma_{1}^{2}\right)}\right) \text {  ~ } N\left(\mu_{2}, \sigma_{2}^{2}\right)<br>$$</p>
+<p>$$<br>\text { 若 } \quad \sigma_{1}^{2}\ll\sigma_{2}^{2}  \text { 后验 ~ } N\left(\frac{\sigma_{1}^{2} / \sigma_{2}^{2}}{1+\left(\sigma_{1}^{2} / \sigma_{2}^{2}\right)} \mu_{2}+\frac{1}{1+\left(\sigma_{1}^{2} / \sigma_{2}^{2}\right)} \mu_{1}, \frac{\sigma_{1}^{2}}{1+\left(\sigma_{1}^{2} / \sigma_{2}^{2}\right)}\right) \text {  ~ } N\left(\mu_{1}, \sigma_{1}^{2}\right)<br>$$</p>
+<p>$$<br>\begin{equation}\sigma_{1}^{2} \gg \sigma_{2}^{2} \quad \text { 倾向于观测值 }  \sigma_{2}^{2} \ll \sigma_{1}^{2} \quad \text { 倾向于预测值 }\end{equation}<br>$$</p>
+<p>$$<br>\frac{\sigma_{1}^{2} \sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}=\sigma_{1}^{2} \frac{1}{1+\sigma_{1}^{2} / \sigma_{2}^{2}}=\sigma_{2}^{2} \frac{1}{1+\sigma_{2}^{2} / \sigma_{1}^{2}}<br>$$</p>
+<h3 id="狄拉克函数"><a href="#狄拉克函数" class="headerlink" title="狄拉克函数"></a>狄拉克函数</h3><a id="more"></a>
+<p>$$<br>\delta(x)=\left{\begin{array}{cc}<br>0 &amp; x\neq0 \<br>\infty &amp; x=0<br>\end{array} \int_{-\infty}^{+\infty} \delta(x) d x=1 \quad \int_{-\infty}^{+\infty} f(x) \delta(x)=f(0)\right.<br>$$</p>
+<p>$$<br>\delta(x) \text { 实质上为必然事件的概率密度 }<br>$$</p>
+<p>$$<br>P(X=0)=1 \quad \Rightarrow \quad P(X&lt;x)=\left{\begin{array}{ll}<br>0 &amp; x&lt;0 \<br>1 &amp; x \geq 0<br>\end{array}\right.<br>$$</p>
+<p>$$<br>\text{ 设 } H(x)=\left{\begin{array}{ll}<br>1 &amp; x \geq 0 \<br>0 &amp; x&lt;0<br>\end{array} \quad \text{ 则 }\delta ( x)=\frac{d}{d x} H(x)\right.<br>$$</p>
+<h6 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h6><p>$$<br>\text{证明} \quad \int_{-\infty}^{+\infty} f(x) \delta(x) d x=f(0)<br>$$</p>
+<p>$$<br>\begin{aligned}<br>I=\int_{-\infty}^{+\infty} f(x) d H(x) &amp;=\left.f(x) H(x)\right|<em>{-\infty} ^{+\infty}-\int</em>{-\infty}^{+\infty} f^{\prime}(x) H(x) d x \<br>&amp;=f(+\infty) \cdot 1-0-\left(\int_{0}^{+\infty} f^{\prime}(x) d x\right) \<br>&amp;=f(+\infty)-(f(+\infty)-f(0))=f(0)<br>\end{aligned}<br>$$</p>
+<h6 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h6><p>$$<br>1.\int_{a}^{b} \delta(x) d x=1 \quad a&lt;0&lt;b\<br>2.\int_{a}^{b} f(x) \delta(x)=f(0) \quad a&lt;0&lt;b\<br>3.\int_{c}^{d} f(x) \delta(x-a)=f(a) \quad c&lt;a&lt;d<br>$$</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%BB%A4%E6%B3%A2/" data-id="ckbq4y0c1000ga4sh9oy7747u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%BB%A4%E6%B3%A2%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          贝叶斯滤波公式推导
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">贝叶斯公式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/22/%E9%A1%B9%E7%9B%AE1/">项目1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%951/">数据结构与算法1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%9B%BE%E7%89%87/">卡尔曼滤波图片</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E4%BB%A3%E7%A0%81/">卡尔曼滤波代码</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/">计算机网络2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

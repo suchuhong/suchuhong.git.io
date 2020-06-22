@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>计算机网络1 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[TOC]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络1">
+<meta property="og:url" content="http://yoursite.com/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[TOC]">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/NAT.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/TCP_IP.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/TCP%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/TCP%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/%E8%BE%93%E5%85%A5url.jpg">
+<meta property="article:published_time" content="2020-06-22T06:26:38.107Z">
+<meta property="article:modified_time" content="2020-06-22T06:49:19.641Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/NAT.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-计算机网络1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/" class="article-date">
+  <time datetime="2020-06-22T06:26:38.107Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机网络1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<a id="more"></a>
+
+<h3 id="1、NAT"><a href="#1、NAT" class="headerlink" title="1、NAT"></a>1、NAT</h3><p><strong>网络地址转换。英文为 Network Address Translation，简称NAT。</strong></p>
+<p>将局域网中的  主机 IP + 端口 映射成 网关 + 端口，减少公有IP的分配</p>
+<p><img src="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/NAT.jpg" alt="NAT"></p>
+<h3 id="2、255-255-255-255-和-0-0-0-0"><a href="#2、255-255-255-255-和-0-0-0-0" class="headerlink" title="2、255.255.255.255 和 0.0.0.0"></a>2、255.255.255.255 和 0.0.0.0</h3><ul>
+<li><p><strong>255.255.255.255这个地址一般用来广播的时候使用，</strong></p>
+</li>
+<li><p><strong>而0.0.0.0这个地址可以代表这是一个还没有分配 ip 的主机。</strong></p>
+</li>
+</ul>
+<p><a href="https://mp.weixin.qq.com/s/JPu6zVnqo6bwUHpi9WfoCw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/JPu6zVnqo6bwUHpi9WfoCw</a></p>
+<h3 id="3、MAC-地址是否需要唯一？"><a href="#3、MAC-地址是否需要唯一？" class="headerlink" title="3、MAC 地址是否需要唯一？"></a>3、MAC 地址是否需要唯一？</h3><p><a href="https://mp.weixin.qq.com/s/BtH9O9pjnsbSLxj8YEvy0A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/BtH9O9pjnsbSLxj8YEvy0A</a></p>
+<p>当我们的设备想要向其他的设备发送数据时，它会先通过 <strong>ARP(Address Resolution Protocol，地址解析协议)</strong> 在局域网中获取目的 IP 地址对应的 MAC 地址</p>
+<p>MAC 地址是==链路层网络==中的重要概念，在==局域网==中会通过 ==MAC 地址==转发以太网数据帧，全球唯一的 MAC 地址是非常理想的情况，然而在实际的网络场景中，我们不需要保证如此强的限制：</p>
+<ul>
+<li>MAC 地址可以==通过软件进行修改==，而第三方的山寨厂商不会在 IEEE 中申请独立的 MAC 地址段，它们也可能会盗用其他厂商申请的 MAC 地址；</li>
+<li>保证 MAC 地址在局域网中唯一就不会造成网络问题</li>
+<li>不同局域网中的 MAC 地址可以相同；</li>
+</ul>
+<p>因为<strong>交换机的 MAC 地址学习策略</strong>，所以我们<strong>不能在同一个局域网中使用相同的 MAC 地址</strong>，但是因为 MAC 地址是链路层网络中的概念，<strong>跨局域网</strong>的网络传输需要通过网络层的 <strong>IP 协议</strong>，所以在<strong>不同的局域网</strong>中使用<strong>相同的 MAC</strong> 地址就不存在类似的问题了。</p>
+<h3 id="4、计算机网络"><a href="#4、计算机网络" class="headerlink" title="4、计算机网络"></a>4、计算机网络</h3><p><a href="https://mp.weixin.qq.com/s/cBiIEw5UXaXOgs9BydXjEQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/cBiIEw5UXaXOgs9BydXjEQ</a></p>
+<ul>
+<li>应用层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+<li>物理层</li>
+</ul>
+<p>1、应用层</p>
+<p>如<strong>域名系统DNS</strong>，支持万维网应用的<strong>HTTP协议</strong>，支持电子邮件的<strong>SMTP协议</strong>等等。我们把应用层交互的数据单元称为报文。</p>
+<p>2、传输层</p>
+<p><strong>运输层(transport layer)的主要任务就是负责向两台主机进程之间的通信提供通用的数据传输服务</strong></p>
+<h4 id="运输层主要使用以下两种协议"><a href="#运输层主要使用以下两种协议" class="headerlink" title="运输层主要使用以下两种协议"></a>运输层主要使用以下两种协议</h4><ol>
+<li><strong>传输控制协议TCP</strong>（Transmisson Control Protocol）–提供<strong>面向连接</strong>的，<strong>可靠的</strong>数据传输服务。TCP提供全双工通信，面向字节流。</li>
+<li><strong>用户数据协议UDP</strong>（User Datagram Protocol）–提供<strong>无连接</strong>的，尽最大努力的数据传输服务（<strong>不保证数据传输的可靠性</strong>）。</li>
+</ol>
+<p>3、网络层</p>
+<p><strong>网络层(network layer)负责为分组交换网上的不同主机提供通信服务</strong></p>
+<p>网络层使用<strong>IP协议</strong>，因此分组也叫<strong>IP数据报</strong>，简称<strong>数据报</strong></p>
+<p>4、数据链路层</p>
+<p><strong>数据链路层将网络层交下来的IP数据报组装程帧</strong>，在两个相邻节点间的链路上传送帧</p>
+<p>5、物理层</p>
+<p><strong>物理层(physical layer)的作用是实现相邻计算机节点之间比特流的透明传送，尽可能屏蔽掉具体传输介质和物理设备的差异</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/TCP_IP.jpg" alt="TCP/IP"></p>
+<h3 id="5、TCP三次握手建立连接和TCP四次挥手断开连接"><a href="#5、TCP三次握手建立连接和TCP四次挥手断开连接" class="headerlink" title="5、TCP三次握手建立连接和TCP四次挥手断开连接"></a>5、TCP三次握手建立连接和TCP四次挥手断开连接</h3><ul>
+<li>客户端–发送带有SYN标志的数据包–一次握手–服务端</li>
+<li>服务端–发送带有SYN/ACK标志的数据包–二次握手–客户端</li>
+<li>客户端–发送带有带有ACK标志的数据包–三次握手–服务端</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/TCP%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5.jpg" alt="TCP建立连接"></p>
+<p>断开一个TCP连接则需要“四次挥手”：</p>
+<ul>
+<li>客户端-发送一个FIN，用来关闭客户端到服务器的数据传送</li>
+<li>服务器-收到这个FIN，它发回一个ACK，确认序号为收到的序号加1 。和SYN一样，一个FIN将占用一个序号</li>
+<li>服务器-关闭与客户端的连接，发送一个FIN给客户端</li>
+<li>客户端-发回ACK报文确认，并将确认序号设置为收到序号加1</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/TCP%E6%96%AD%E5%BC%80%E8%BF%9E%E6%8E%A5.jpg" alt="TCP断开连接"></p>
+<h3 id="6、TCP协议如何保证可靠传输"><a href="#6、TCP协议如何保证可靠传输" class="headerlink" title="6、TCP协议如何保证可靠传输"></a>6、TCP协议如何保证可靠传输</h3><ol>
+<li>应用数据被分割成TCP认为最适合发送的数据块。</li>
+<li><strong>超时重传</strong></li>
+<li>TCP给发送的每一个包进行编号，接收方对数据包进行排序，把有序数据传送给应用层。</li>
+<li><strong>校验和</strong></li>
+<li>TCP的接收端会丢弃重复的数据。</li>
+<li><strong>流量控制</strong></li>
+<li><strong>拥塞控制</strong> </li>
+<li><strong>停止等待ARQ协议（stop and wait）</strong> </li>
+</ol>
+<h3 id="7、打开一个网页，整个过程会使用哪些协议，输入-url"><a href="#7、打开一个网页，整个过程会使用哪些协议，输入-url" class="headerlink" title="7、打开一个网页，整个过程会使用哪些协议，输入 url"></a>7、打开一个网页，整个过程会使用哪些协议，输入 url</h3><p><img src="https://cdn.jsdelivr.net/gh/suchuhong/mypicture/project/%E8%BE%93%E5%85%A5url.jpg" alt="url"></p>
+<h3 id="8、TCP-文章汇总"><a href="#8、TCP-文章汇总" class="headerlink" title="8、TCP 文章汇总"></a>8、TCP 文章汇总</h3><h4 id="万字长文拿下HTTP"><a href="#万字长文拿下HTTP" class="headerlink" title="万字长文拿下HTTP"></a><a href="https://mp.weixin.qq.com/s/HFOU2zfpRTGRRiW2NwohaQ" target="_blank" rel="noopener">万字长文拿下HTTP</a></h4><h4 id="TCP-这几个参数"><a href="#TCP-这几个参数" class="headerlink" title="TCP 这几个参数"></a><a href="https://mp.weixin.qq.com/s/fjnChU3MKNc_x-Wk7evLhg" target="_blank" rel="noopener">TCP 这几个参数</a></h4><h4 id="40-张图解被问千百遍的-TCP-三次握手和四次挥手"><a href="#40-张图解被问千百遍的-TCP-三次握手和四次挥手" class="headerlink" title="40 张图解被问千百遍的 TCP 三次握手和四次挥手"></a><a href="https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&mid=2247484005&idx=1&sn=cb07ee1c891a7bdd0af3859543190202&scene=21#wechat_redirect" target="_blank" rel="noopener">40 张图解被问千百遍的 TCP 三次握手和四次挥手</a></h4><h4 id="用“大白鲨”让你看见-TCP"><a href="#用“大白鲨”让你看见-TCP" class="headerlink" title="用“大白鲨”让你看见 TCP"></a><a href="https://mp.weixin.qq.com/s/tU_zjXR69QRrPiAGdqpq3w" target="_blank" rel="noopener">用“大白鲨”让你看见 TCP</a></h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/" data-id="ckbq54jkn0004vwshgv0y3rzo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          计算机网络2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">操作系统1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/22/%E9%A1%B9%E7%9B%AE1/">项目1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%951/">数据结构与算法1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%9B%BE%E7%89%87/">卡尔曼滤波图片</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E4%BB%A3%E7%A0%81/">卡尔曼滤波代码</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/">计算机网络2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

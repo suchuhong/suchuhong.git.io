@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-c++1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/c++1/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.704Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/c++1/">c++1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CMyString&amp; CMyString::<span class="keyword">operator</span> = (<span class="keyword">const</span> CMyString&amp; str)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span> == &amp;str)</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">delete</span>[]m_pData;</span><br><span class="line">	m_pData = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">	m_pData = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="built_in">strlen</span>(str.m_pData) + <span class="number">1</span>];</span><br><span class="line">	<span class="built_in">strcpy</span>(m_pData, str.m_pData);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>重载赋值运算符<ul>
+<li>返回值：该类型的引用   &amp;</li>
+<li>传入参数为 常量引用 const &amp;</li>
+<li>return *this 连续赋值</li>
+<li>判断是否自我赋值</li>
+<li>是否释放内存</li>
+</ul>
+</li>
+</ul>
+<h3 id="2、sizeof"><a href="#2、sizeof" class="headerlink" title="2、sizeof"></a>2、sizeof</h3><ul>
+<li><p>面试官：定义一个空的类型，里面没有任何成员变量和成员函数。对该类型求sizeof，得到的结果是多少？</p>
+</li>
+<li><p>应聘者：答案是1。</p>
+</li>
+<li><p>面试官：为什么不是0？</p>
+</li>
+<li><p>应聘者：空类型的实例中不包含任何信息，本来求sizeof应该是0，但是当我们声明该类型的实例的时候，它必须在内存中占有一定的空间，否则无法使用这些实例。至于占用多少内存，由编译器决定。在Visual Studio中，每个空类型的实例占用1字节的空间。</p>
+</li>
+<li><p>面试官：如果在该类型中添加一个构造函数和析构函数，再对该类型求sizeof，得到的结果又是多少？</p>
+</li>
+<li><p>应聘者：和前面一样，还是1。调用构造函数和析构函数只需要知道函数的地址即可，而这些函数的地址只与类型相关，而与类型的实例无关，编译器也不会因为这两个函数而在实例内添加任何额外的信息。</p>
+</li>
+<li><p>面试官：那如果把析构函数标记为虚函数呢？</p>
+</li>
+<li><p>应聘者：C++的编译器一旦发现一个类型中有虚函数，就会为该类型生成虚函数表，并在该类型的每一个实例中添加一个指向虚函数表的指针。在32位的机器上，一个指针占4字节的空间，因此求sizeof得到4；如果是64位的机器，则一个指针占8字节的空间，因此求sizeof得到8。</p>
+</li>
+</ul>
+<h3 id="3、struct和class来定义类型"><a href="#3、struct和class来定义类型" class="headerlink" title="3、struct和class来定义类型"></a>3、struct和class来定义类型</h3><ul>
+<li>面试官：在C++中可以用struct和class来定义类型。这两种类型有什么区别？</li>
+<li>应聘者：如果没有标明成员函数或者成员变量的访问权限级别，那么在struct中默认的是public，而在class中默认的是private。</li>
+</ul>
+<h3 id="4、单例设计模式"><a href="#4、单例设计模式" class="headerlink" title="4、单例设计模式"></a>4、单例设计模式</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">S</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">static</span> S&amp; <span class="title">getInstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">static</span> S    instance; <span class="comment">// Guaranteed to be destroyed.</span></span><br><span class="line">                                  <span class="comment">// Instantiated on first use.</span></span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        S() &#123;&#125;                    <span class="comment">// Constructor? (the &#123;&#125; brackets) are needed here.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// C++ 03</span></span><br><span class="line">        <span class="comment">// ========</span></span><br><span class="line">        <span class="comment">// Don't forget to declare these two. You want to make sure they</span></span><br><span class="line">        <span class="comment">// are unacceptable otherwise you may accidentally get copies of</span></span><br><span class="line">        <span class="comment">// your singleton appearing.</span></span><br><span class="line">        S(S <span class="keyword">const</span>&amp;);              <span class="comment">// Don't Implement</span></span><br><span class="line">        <span class="keyword">void</span> <span class="keyword">operator</span>=(S <span class="keyword">const</span>&amp;); <span class="comment">// Don't implement</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// C++ 11</span></span><br><span class="line">        <span class="comment">// =======</span></span><br><span class="line">        <span class="comment">// We can use the better technique of deleting the methods</span></span><br><span class="line">        <span class="comment">// we don't want.</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        S(S <span class="keyword">const</span>&amp;)               = <span class="keyword">delete</span>;</span><br><span class="line">        <span class="keyword">void</span> <span class="keyword">operator</span>=(S <span class="keyword">const</span>&amp;)  = <span class="keyword">delete</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Note: Scott Meyers mentions in his Effective Modern</span></span><br><span class="line">        <span class="comment">//       C++ book, that deleted functions should generally</span></span><br><span class="line">        <span class="comment">//       be public as it results in better error messages</span></span><br><span class="line">        <span class="comment">//       due to the compilers behavior to check accessibility</span></span><br><span class="line">        <span class="comment">//       before deleted status</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/c++1/" data-id="ckbq54jk50001vwsh3uif90l3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-知识点总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.669Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">知识点总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1、使用-socket-编写-http-客户端和-http-服务器"><a href="#1、使用-socket-编写-http-客户端和-http-服务器" class="headerlink" title="1、使用 socket 编写 http 客户端和 http 服务器"></a>1、使用 socket 编写 http 客户端和 http 服务器</h4>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" data-id="ckbq4y0bb000ca4sh7r44cdef" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/hello-world/" class="article-date">
+  <time datetime="2020-06-22T06:13:45.893Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/hello-world/" data-id="ckbq4y0970003a4sh1kzv4h4p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/%E6%95%B0%E6%8D%AE%E5%BA%931/" class="article-date">
+  <time datetime="2020-06-22T04:19:26.533Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/%E6%95%B0%E6%8D%AE%E5%BA%931/">数据库1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MYSQL-事务"><a href="#MYSQL-事务" class="headerlink" title="MYSQL 事务"></a>MYSQL 事务</h3><p><a href="https://mp.weixin.qq.com/s/D0JifQj_yxhCoeYS57Qj_g" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/D0JifQj_yxhCoeYS57Qj_g</a></p>
+<ul>
+<li>关系型数据库：MySQL、Oracle、DB2 和 SqlServer</li>
+<li>非关系型数据库（NoSQL）</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/%E6%95%B0%E6%8D%AE%E5%BA%931/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/%E6%95%B0%E6%8D%AE%E5%BA%931/" data-id="ckbq4y0ap000ba4sh656fevvx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-我的第一篇文章-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0-md/" class="article-date">
+  <time datetime="2020-04-22T02:55:40.000Z" itemprop="datePublished">2020-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0-md/">我的第一篇文章.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>内容</p>
+<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>内容</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0-md/" data-id="ckbq4y0aj000aa4sh12z00qos" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/22/%E9%A1%B9%E7%9B%AE1/">项目1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%951/">数据结构与算法1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%9B%BE%E7%89%87/">卡尔曼滤波图片</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E4%BB%A3%E7%A0%81/">卡尔曼滤波代码</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/">计算机网络2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

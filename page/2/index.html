@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-贝叶斯滤波" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%BB%A4%E6%B3%A2/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.976Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%BB%A4%E6%B3%A2/">贝叶斯滤波</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>$$<br>\text { 重要定理：若 }f_{X}(x) \text { ~ } N\left(\mu_{1}, \sigma_{1}^{2}\right), \quad f_{Y |X}(y | x)  \text { ~ } N\left(\mu_{2}, \sigma_{2}^{2}\right)<br>$$</p>
+<p>$$<br>\text { 则 }f_{X |Y}(x | y)=\left(\frac{\sigma_{1}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}} \mu_{2}+\frac{\sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}} \mu_{1}, \frac{\sigma_{1}^{2} \sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}\right)<br>$$</p>
+<p>$$<br>\text { 若 } \quad \sigma_{1}^{2}\gg\sigma_{2}^{2}  \text { 后验 ~} N\left(\frac{1}{1+\left(\sigma_{2}^{2} / \sigma_{1}^{2}\right)} \mu_{2}+\frac{\sigma_{2}^{2} / \sigma_{1}^{2}}{1+\left(\sigma_{2}^{2} / \sigma_{1}^{2}\right)} \mu_{1}, \frac{\sigma_{2}^{2}}{1+\left(\sigma_{2}^{2} / \sigma_{1}^{2}\right)}\right) \text {  ~ } N\left(\mu_{2}, \sigma_{2}^{2}\right)<br>$$</p>
+<p>$$<br>\text { 若 } \quad \sigma_{1}^{2}\ll\sigma_{2}^{2}  \text { 后验 ~ } N\left(\frac{\sigma_{1}^{2} / \sigma_{2}^{2}}{1+\left(\sigma_{1}^{2} / \sigma_{2}^{2}\right)} \mu_{2}+\frac{1}{1+\left(\sigma_{1}^{2} / \sigma_{2}^{2}\right)} \mu_{1}, \frac{\sigma_{1}^{2}}{1+\left(\sigma_{1}^{2} / \sigma_{2}^{2}\right)}\right) \text {  ~ } N\left(\mu_{1}, \sigma_{1}^{2}\right)<br>$$</p>
+<p>$$<br>\begin{equation}\sigma_{1}^{2} \gg \sigma_{2}^{2} \quad \text { 倾向于观测值 }  \sigma_{2}^{2} \ll \sigma_{1}^{2} \quad \text { 倾向于预测值 }\end{equation}<br>$$</p>
+<p>$$<br>\frac{\sigma_{1}^{2} \sigma_{2}^{2}}{\sigma_{1}^{2}+\sigma_{2}^{2}}=\sigma_{1}^{2} \frac{1}{1+\sigma_{1}^{2} / \sigma_{2}^{2}}=\sigma_{2}^{2} \frac{1}{1+\sigma_{2}^{2} / \sigma_{1}^{2}}<br>$$</p>
+<h3 id="狄拉克函数"><a href="#狄拉克函数" class="headerlink" title="狄拉克函数"></a>狄拉克函数</h3>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%BB%A4%E6%B3%A2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%BB%A4%E6%B3%A2/" data-id="ckbq4y0c1000ga4sh9oy7747u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-贝叶斯公式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.947Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F/">贝叶斯公式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="贝叶斯公式"><a href="#贝叶斯公式" class="headerlink" title="贝叶斯公式"></a>贝叶斯公式</h2><p>$$<br>P(X=x ，Y=y)=P(Y = y | X=x) P(X=x)=P(X=x | Y = y) P(Y = y)<br>$$</p>
+<h3 id="1、离散形式"><a href="#1、离散形式" class="headerlink" title="1、离散形式"></a>1、离散形式</h3><p>$$<br>P(X=x | Y=y)=\frac{P(Y = y | X=x) P(X=x)}{P(Y=y)}<br>$$</p>
+<h3 id="2、连续形式"><a href="#2、连续形式" class="headerlink" title="2、连续形式"></a>2、连续形式</h3><p>$$<br>P(X&lt;x | Y=y)=\frac{P(Y=y | X&lt;x) P(X&lt;x)}{P(Y=y)}<br>$$</p>
+<h4 id="2-1-推导过程"><a href="#2-1-推导过程" class="headerlink" title="2.1 推导过程"></a>2.1 推导过程</h4>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F/" data-id="ckbq4y0bv000fa4sh496ec4yf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/python1/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.930Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/python1/">python1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、python-单例设计模式"><a href="#1、python-单例设计模式" class="headerlink" title="1、python 单例设计模式"></a>1、python 单例设计模式</h3><ul>
+<li>单例—— 让类创建的对象，在系统中只有唯一的一个实例<ol>
+<li>定义一个 <strong>类属性</strong>，初始值是 <code>None</code>，用于记录 <strong>单例对象的引用</strong></li>
+<li>重写 <code>__new__</code> 方法</li>
+<li>如果 <strong>类属性</strong> <code>is None</code>，调用父类方法分配空间，并在类属性中记录结果</li>
+<li>返回 <strong>类属性</strong> 中记录的 <strong>对象引用</strong></li>
+</ol>
+</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/python1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/python1/" data-id="ckbq54jka0002vwsh1uzyc7v0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/linux%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.904Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/linux%E5%91%BD%E4%BB%A4/">linux命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.功能作用：解压缩zip文件</p>
+<p>2.位置：<code>/usr/bin/unzip</code></p>
+<p>3.格式用法：<code>unzip [-Z] [-opts[modifiers]] file[.zip] [list] [-x xlist] [-d exdir]</code></p>
+<p>4.主要参数</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/linux%E5%91%BD%E4%BB%A4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/linux%E5%91%BD%E4%BB%A4/" data-id="ckbq4y09o0005a4sh36te8wij" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux基本命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.889Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">linux基本命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Linux-基本命令"><a href="#Linux-基本命令" class="headerlink" title="Linux 基本命令"></a>Linux 基本命令</h3>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" data-id="ckbq4y09u0006a4shfcxlb6ae" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux服务器的设置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%AE%BE%E7%BD%AE/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.872Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%AE%BE%E7%BD%AE/">linux服务器的设置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="linux-主机设置"><a href="#linux-主机设置" class="headerlink" title="linux 主机设置"></a>linux 主机设置</h4>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%AE%BE%E7%BD%AE/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%AE%BE%E7%BD%AE/" data-id="ckbq4y0a10007a4sh1g545l3a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-kalman_filter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/kalman_filter/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.846Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/kalman_filter/">kalman_filter</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="贝叶斯公式"><a href="#贝叶斯公式" class="headerlink" title="贝叶斯公式"></a>贝叶斯公式</h2><p>$$<br>P(X=x ，Y=y)=P(Y = y | X=x) P(X=x)=P(X=x | Y = y) PY = y)<br>$$</p>
+<h3 id="1、离散形式"><a href="#1、离散形式" class="headerlink" title="1、离散形式"></a>1、离散形式</h3><p>$$<br>P(X=x | Y=y)=\frac{P(Y = y | X=x) P(X=x)}{P(Y=y)}<br>$$</p>
+<h3 id="2、连续形式"><a href="#2、连续形式" class="headerlink" title="2、连续形式"></a>2、连续形式</h3><p>$$<br>P(X&lt;x | Y=y)=\frac{P(Y=y | X&lt;x) P(X&lt;x)}{P(Y=y)}<br>$$</p>
+<h4 id="2-1-推导过程"><a href="#2-1-推导过程" class="headerlink" title="2.1 推导过程"></a>2.1 推导过程</h4>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/kalman_filter/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/kalman_filter/" data-id="ckbq4y09e0004a4sh79xzaaty" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTTP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/HTTP/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.825Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/HTTP/">HTTP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="图解-HTTP"><a href="#图解-HTTP" class="headerlink" title="图解 HTTP"></a>图解 HTTP</h3><p><a href="https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&amp;mid=2247483971&amp;idx=1&amp;sn=8f2d5dae3d95efc446061b352c8e9961&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzUxODAzNDg4NQ==&amp;mid=2247483971&amp;idx=1&amp;sn=8f2d5dae3d95efc446061b352c8e9961&amp;scene=21#wechat_redirect</a></p>
+<p><a href="https://mp.weixin.qq.com/s/HFOU2zfpRTGRRiW2NwohaQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/HFOU2zfpRTGRRiW2NwohaQ</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/22/HTTP/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/HTTP/" data-id="ckbq4y06e0000a4sh9x8w0xqi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-flask项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/flask%E9%A1%B9%E7%9B%AE/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.788Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/flask%E9%A1%B9%E7%9B%AE/">flask项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/flask%E9%A1%B9%E7%9B%AE/" data-id="ckbq4y08u0002a4sh1c041ta2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-conda" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/conda/" class="article-date">
+  <time datetime="2020-06-22T06:26:37.743Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/conda/">conda</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Conda常用命令整理_运维_Working. Playing.-CSDN博客<br><a href="https://blog.csdn.net/menc15/article/details/71477949" target="_blank" rel="noopener">https://blog.csdn.net/menc15/article/details/71477949</a></p>
+<p>conda常用命令:安装，更新，创建，激活，关闭，查看，卸载，删除，清理，重命名，换源，问题_Python_zhayushui的专栏-CSDN博客<br>python -m pip install paddlepaddle -i <a href="https://mirror.baidu.com/pypi/simple" target="_blank" rel="noopener">https://mirror.baidu.com/pypi/simple</a></p>
+<ul>
+<li>执行以下命令安装（推荐使用百度源）：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install paddlepaddle -i https:&#x2F;&#x2F;mirror.baidu.com&#x2F;pypi&#x2F;simple</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install paddlepaddle -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install tensorflow -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow&#x3D;&#x3D;1.8 -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br><span class="line">tensorboard --logdir E:\\tflog --host 127.0.0.1 --port 88</span><br></pre></td></tr></table></figure>
+
+<p>visual c++ build tools的安装与使用 - marklove - 博客园<br><a href="https://www.cnblogs.com/marklove/p/10812317.html" target="_blank" rel="noopener">https://www.cnblogs.com/marklove/p/10812317.html</a></p>
+<p>philferriere/cocoapi: Clone of COCO API - Dataset @ <a href="http://cocodataset.org/" target="_blank" rel="noopener">http://cocodataset.org/</a> - with changes to support Windows build and python3<br><a href="https://github.com/philferriere/cocoapi" target="_blank" rel="noopener">https://github.com/philferriere/cocoapi</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/conda/" data-id="ckbq4y08m0001a4shgp3nfgjr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/22/%E9%A1%B9%E7%9B%AE1/">项目1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%951/">数据结构与算法1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%9B%BE%E7%89%87/">卡尔曼滤波图片</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E4%BB%A3%E7%A0%81/">卡尔曼滤波代码</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C2/">计算机网络2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
